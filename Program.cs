@@ -42,7 +42,7 @@ namespace EquipoRojo.EstructurasDatos
                 switch (opcion)
                 {
                     case "1":
-                        // TODO: Lista enlazada simple - Integrante 1
+                        MenuListaEnlazada();
                         break;
                     case "2":
                         // TODO: Matriz 2D - Integrante 1
@@ -87,5 +87,60 @@ namespace EquipoRojo.EstructurasDatos
                 }
             }
         }
+            static void MenuListaEnlazada()
+        {
+            ListaEnlazada lista = new ListaEnlazada();
+            bool volver = false;
+
+            while (!volver)
+            {
+                Console.Clear();
+                Console.WriteLine("=== LISTA ENLAZADA SIMPLE ===");
+                Console.WriteLine("Ejemplo: ruta de patrulla de Kalet");
+                Console.WriteLine();
+                Console.WriteLine("  1. Insertar parada");
+                Console.WriteLine("  2. Mostrar ruta");
+                Console.WriteLine("  3. Buscar parada");
+                Console.WriteLine("  4. Eliminar parada");
+                Console.WriteLine("  0. Volver");
+                Console.WriteLine();
+                Console.Write("Elige: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        Console.Write("Nombre de la parada: ");
+                        lista.Insertar(Console.ReadLine());
+                        break;
+                    case "2":
+                        Console.WriteLine();
+                        lista.Mostrar();
+                        break;
+                    case "3":
+                        Console.Write("Buscar: ");
+                        Console.WriteLine(lista.Buscar(Console.ReadLine())
+                            ? "  Sí está en la ruta."
+                            : "  No está en la ruta.");
+                        break;
+                    case "4":
+                        Console.Write("Eliminar: ");
+                        Console.WriteLine(lista.Eliminar(Console.ReadLine())
+                            ? "  Eliminada."
+                            : "  No se encontró.");
+                        break;
+                    case "0":
+                        volver = true;
+                        continue;
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        break;
+                }
+
+                Console.WriteLine();
+                Console.Write("Presiona Enter para continuar...");
+                Console.ReadLine();
+            }
+        }
+
     }
 }
